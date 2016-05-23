@@ -1,0 +1,21 @@
+{
+    "name": "appertly/axe-markdown",
+    "description": "Appertly XHP Extras Markdown: Markdown to XHP",
+    "license": "MIT",
+    "keywords": ["hack", "hhvm", "xhp", "markdown"],
+    "homepage": "http://github.com/appertly/axe-markdown",
+    "require": {
+        "hhvm": "~3.12",
+        "facebook/xhp-lib": "~2.2",
+        "league/commonmark": "^0.13"
+    },
+    "require-dev": {
+        "hackpack/hackunit": "~0.6"
+    },
+    "autoload": {
+        "classmap": [
+            "src",
+            "xhp"
+        ]
+    }
+}
