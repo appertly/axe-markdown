@@ -1,0 +1,114 @@
+<!-- Boilerplate by @doublecompile // Version 0.1.0 // MIT License -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>AXE Markdown: Markdown to XHP in Hack/HHVM</title>
+        <meta name="description" content="Appertly XHP Extras (AXE) Markdown: Markdown to XHP in Hack/HHVM">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="///cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <script src="vendor/js/modernizr.min.custom.js"></script>
+        <link rel="icon" sizes="16x16 32x32 48x48 64x64" href="favicon.ico">
+        <!--[if IE]><link rel="shortcut icon" href="favicon.ico"><![endif]-->
+        <!-- Touch icon for iOS 2.0+ and Android 2.1+: -->
+        <link rel="apple-touch-icon-precomposed" href="favicon-152.png">
+        <!-- IE 10 Metro tile icon (Metro equivalent of apple-touch-icon): -->
+        <meta name="msapplication-TileColor" content="#FFFFFF">
+        <meta name="msapplication-TileImage" content="favicon-144.png">
+        <!-- IE 11 live tiles: -->
+        <meta name="msapplication-square70x70logo" content="favicon-70.png" />
+        <meta name="msapplication-square150x150logo" content="favicon-150.png" />
+        <meta name="msapplication-square310x310logo" content="favicon-310.png" />
+        <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicon-152.png">
+        <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon-144.png">
+        <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon-120.png">
+        <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon-114.png">
+        <!-- For first- and second-generation iPad: -->
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon-72.png">
+        <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+        <link rel="apple-touch-icon-precomposed" href="favicon-57.png">
+    </head>
+    <body>
+        <div id="universe">
+            <div class="columns columns-golden big-right clearfix">
+                <div class="column">
+                    <header id="page-header" role="banner">
+                        <div class="logo" role="presentation"></div>
+                        <h1><abbr title="Appertly XHP Extras">AXE</abbr> Markdown</h1>
+                        <h2>Markdown → XHP in Hack/HHVM</h2>
+                        <div class="region clearfix">
+                        </div>
+                    </header>
+                    <div class="install">
+                        <h4>Install via Composer</h4>
+                        <pre class="language-bash"><code>composer install appertly/axe-markdown</code></pre>
+                    </div>
+                    <div class="contribute">
+                        <h4>Contribute</h4>
+                        <p>Find <a href="https://github.com/appertly/axe-markdown">the project on GitHub</a>
+                            where you can submit <a href="https://github.com/appertly/axe-markdown/issues">issues</a>
+                            or <a href="https://github.com/appertly/axe-markdown/pulls">pull requests</a>.
+                        </p>
+                    </div>
+                    <div class="docs">
+                        <h4>Documentation</h4>
+                        <p>A reference guide is in the works. In the meantime, check out the
+                            <a href="https://github.com/appertly/axe-markdown/blob/master/README.md">README</a>
+                            or take a look at <a href="api/">the API documentation</a>.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <main role="main">
+                        <div class="region clearfix">
+                            <h2>The Gist</h2>
+                            <p><abbr title="Appertly XHP Extras">AXE</abbr> Markdown takes Markdown text and converts it into <em>bona fide</em> XHP nodes.</p>
+                            <h2>Features</h2>
+                            <p>The <code>axe:markdown</code> tag takes Markdown text and renders XHP. For example, take Markdown like this:</p>
+                            <pre class="language-markdown"><code># Hello!
+This is great
+* Don't you think?</code></pre>
+                            <p>…give it to <code>&lt;axe:markdown text={$text}/&gt;</code> and get XHP nodes like exactly this:</p>
+                            <pre class="language-hack"><code>&lt;x:frag&gt;
+    &lt;h1&gt;Hello!&lt;/h1&gt;
+    &lt;p&gt;This is great&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Don't you think?&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/x:frag&gt;</code></pre>
+                            <h3>Under the Covers</h3>
+                            <p>Behind the scenes, we use the <code><a href="http://commonmark.thephpleague.com/">league/commonmark</a></code>
+                                library to generate the Markdown <abbr title="Abstract Syntax Tree">AST</abbr>.
+                                That being the case, you can supply your own customized <code>Environment</code> or <code>DocParser</code>.</p>
+                                <pre><span class="pl-s1"><span class="pl-smi">$environment</span> <span class="pl-k">=</span> <span class="pl-c1">League\CommonMark\</span><span class="pl-c1">Environment</span><span class="pl-k">::</span>createCommonMarkEnvironment();</span>
+<span class="pl-s1"><span class="pl-c">// customize Environment</span></span>
+<span class="pl-s1"><span class="pl-smi">$docParser</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">League\CommonMark\</span><span class="pl-c1">DocParser</span>(<span class="pl-smi">$environment</span>);</span>
+<span class="pl-s1"><span class="pl-c">// customize DocParser</span></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-k">&lt;</span><span class="pl-c1">axe</span>:<span class="pl-c1">markdown</span> <span class="pl-c1">text</span><span class="pl-k">=</span>{<span class="pl-smi">$text</span>} <span class="pl-c1">docParser</span><span class="pl-k">=</span>{<span class="pl-smi">$docParser</span>}<span class="pl-k">/</span><span class="pl-k">&gt;</span>;</span></pre>
+                            <h2>Related</h2>
+                            <p>The parent project, <a href="https://appertly.github.io/axe/">AXE</a>,
+                                has some useful XHP-related tags and utilities.</p>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <footer id="page-footer" role="contentinfo">
+                <div class="region clearfix">
+                    <div class="block">
+                        <p class="copyright">
+                            © 2016 <a href="https://github.com/appertly">Appertly</a>.
+                            This website is licensed under <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a>.
+                            The project itself is licensed under <a href="http://spdx.org/licenses/MIT.html">MIT</a>.
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
