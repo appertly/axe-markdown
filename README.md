@@ -2,12 +2,15 @@
 
 **A** ppertly **X** HP **E** xtras Markdown: Markdown to XHP in Hack/HHVM.
 
+[![Packagist](https://img.shields.io/packagist/v/appertly/axe-markdown.svg)](https://packagist.org/packages/appertly/axe-markdown)
+[![Build Status](https://travis-ci.org/appertly/axe-markdown.svg)](https://travis-ci.org/appertly/axe-markdown)
+
 ## Installation
 
 You can install this library using Composer:
 
 ```console
-$ composer require appertly/axe-makdown
+$ composer require appertly/axe-markdown
 ```
 
 * The master branch (version 0.x) of this project requires HHVM 3.12 and depends on [XHP](https://github.com/facebook/xhp-lib) 2.2+ and [league/commonmark](https://github.com/thephpleague/commonmark).
